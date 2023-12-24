@@ -73,7 +73,7 @@ export const getMovieReviews = (id) => {
 
 export const getUpcomingMovies = () => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    `http://localhost:8080/api/movies/tmdb/upcoming`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -89,7 +89,7 @@ export const getUpcomingMovies = () => {
 
 export const getTopRatedMovies = () => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1' `
+    `http://localhost:8080/api/movies/tmdb/topRated' `
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -103,7 +103,7 @@ export const getTopRatedMovies = () => {
 
 export const getMovieRecommendations = (id) => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    `http://localhost:8080/api/movies/tmdb/movie/${id}/recommendations`
   )
     .then((res) => res.json())
     .then((json) => {
@@ -117,7 +117,7 @@ export const getMovieCredits = (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `http://localhost:8080/api/movies/tmdb/movie/${id}/credits`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -135,7 +135,7 @@ export const getPerson = (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
-    `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `http://localhost:8080/api/movies/tmdb/person/${id}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -151,7 +151,7 @@ export const getPersonCredits = (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
-    `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `http://localhost:8080/api/movies/tmdb/person/${id}/credits`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -165,7 +165,7 @@ export const getPersonCredits = (args) => {
 
 export const getPopularReleases = () => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1` 
+    `http://localhost:8080/api/movies/tmdb/popular` 
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
