@@ -29,7 +29,8 @@ export const getGenres = async () => {
     } catch (error) {
         throw error;
     }
-};
+};  
+
 
 
 export const getMovies = async () => {
@@ -72,3 +73,4 @@ export const getMovie = async (id) => {
         return json.results;
       });
   };  
+  
