@@ -87,19 +87,19 @@ export const getUpcomingMovies = () => {
 
 
 
-export const getTopRatedMovies = () => {
+export const getTopRatedMovies = async (page) => {
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/topRated' `
+    `http://localhost:8080/api/movies/tmdb/topRated/${page}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error(response.json().message);
     }
     return response.json();
   })
-    .catch((error) => {
-      throw error
-    });
-};
+  .catch((error) => {
+    throw error
+  });
+}
 
 export const getMovieRecommendations = (id) => {
   return fetch(

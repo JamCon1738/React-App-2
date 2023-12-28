@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import { getTopRatedMovies } from "../api/tmdb-api";
 
@@ -9,7 +9,10 @@ import MustWatchIcon from "../components/cardIcons/mustWatch";
 
 
 const TopRatedMoviesPage = (props) => {
-    const { data, error, isLoading, isError } = useQuery('TopRated', getTopRatedMovies)
+
+
+    const { data, error, isLoading, isError} = useQuery('TopRated', () => getTopRatedMovies(1), {enabled: true})
+
 
     if (isLoading) {
         return <Spinner />

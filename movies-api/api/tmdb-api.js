@@ -75,10 +75,10 @@ export const getMovie = async (id) => {
   };  
 
 
-  export const getTopRatedMovies = async () => {
+  export const getTopRatedMovies = async (page) => {
     try {
         const response = await fetch(
-            `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+            `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_KEY}&page=${page}`
         );
 
         if (!response.ok) {
@@ -90,6 +90,7 @@ export const getMovie = async (id) => {
         throw error;
     }
 };
+
 
 export const getMovieRecommendations = (id) => {
     return fetch(

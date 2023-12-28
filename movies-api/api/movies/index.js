@@ -87,8 +87,8 @@ router.get('/tmdb/movieImages/:id', asyncHandler(async (req, res) => {
     res.status(200).json(movieImages);
 }));
 
-router.get('/tmdb/topRated', asyncHandler(async (req, res) => {
-    const topRatedMovies = await getTopRatedMovies();
+router.get('/tmdb/topRated/:page', asyncHandler(async (req, res) => {
+    const topRatedMovies = await getTopRatedMovies(req.params.page);
     res.status(200).json(topRatedMovies);
 }));
 

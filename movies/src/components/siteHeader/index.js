@@ -10,8 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { auth, db, logout } from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -19,7 +18,6 @@ const SiteHeader = ({ history }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const [user, loading, error] = useAuthState(auth);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -44,10 +42,7 @@ const SiteHeader = ({ history }) => {
     setAnchorEl(event.currentTarget);
   };
 
-  useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate("/");
-  }, [user, loading]);
+ 
 
   return (
     <>
@@ -103,15 +98,7 @@ const SiteHeader = ({ history }) => {
 
             </>
           )}
-        <Button color="error" onClick={logout}   
-                     
-         anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted>
-          Logout
-         </Button>
+
         </Toolbar>
       </AppBar>
 
